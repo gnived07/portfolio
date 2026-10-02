@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nived G Nair — building things, breaking things</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f3ea;--ink:#000;--y:#ffd93d;--r:#ff4d3d;--b:#3d6bff;--g:#2fd37a;--paper:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;font-size:18px;line-height:1.55;
+background-image:linear-gradient(to right,rgba(0,0,0,.07) 1px,transparent 1px);background-size:80px 100%}
+a{color:inherit}
+a:hover{background:var(--y)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:72px 0;position:relative}
+h1,h2,h3{margin:0;line-height:1}
+h2{font-size:clamp(40px,7vw,76px);letter-spacing:-.03em;display:inline-block;background:var(--ink);color:var(--bg);padding:6px 16px;transform:rotate(-1.5deg);margin-bottom:36px}
+.hand{font-family:'Caveat',cursive;font-size:26px;line-height:1}
+.box{background:var(--paper);border:4px solid var(--ink);box-shadow:8px 8px 0 var(--ink)}
+.tag{display:inline-block;border:3px solid var(--ink);padding:2px 12px;font-weight:700;font-size:15px;background:var(--y);box-shadow:3px 3px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.tag:hover{transform:translate(-2px,-2px) rotate(-2deg);box-shadow:5px 5px 0 var(--ink)}
+.btn{display:inline-block;text-decoration:none;font-weight:700;font-size:19px;padding:12px 22px;border:4px solid var(--ink);background:var(--paper);box-shadow:6px 6px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--ink);background:var(--y)}
+.btn.main{background:var(--r);color:#fff}.btn.main:hover{background:var(--r);color:#fff}
+.btn.blue{background:var(--b);color:#fff}.btn.blue:hover{background:var(--b)}
+a:focus-visible,.btn:focus-visible{outline:4px solid var(--b);outline-offset:3px}
+
+/* nav */
+nav{border-bottom:4px solid var(--ink);background:var(--paper);position:sticky;top:0;z-index:10}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:10px;padding-bottom:10px;flex-wrap:wrap}
+nav b{font-size:22px}
+nav div a{margin-left:14px;font-weight:700;text-decoration:none;padding:2px 4px}
+
+/* hero */
+.hero{padding-top:56px}
+.hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(56px,11vw,138px);letter-spacing:-.05em}
+.hero h1 span{display:inline-block;background:var(--y);border:4px solid var(--ink);padding:0 14px;box-shadow:8px 8px 0 var(--ink);transform:rotate(-2deg);margin-top:8px}
+.intro{font-size:clamp(20px,2.4vw,26px);max-width:34ch;margin:28px 0;font-weight:500}
+.btns{display:flex;gap:16px;flex-wrap:wrap}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.badges .tag:nth-child(2){background:var(--g)}.badges .tag:nth-child(3){background:var(--b);color:#fff}
+.card-id{padding:22px;transform:rotate(2.5deg);position:relative}
+.card-id .hand{color:var(--r)}
+.card-id p{margin:8px 0}
+.card-id .stk{position:absolute;top:-22px;right:-12px;background:var(--r);color:#fff;border:3px solid var(--ink);padding:4px 12px;font-weight:700;transform:rotate(8deg);box-shadow:4px 4px 0 var(--ink)}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:32px}
+.about p{margin:0 0 16px}
+.about .box{padding:26px}
+.about .side{background:var(--g);padding:24px;transform:rotate(1.5deg);margin-top:30px}
+.side ul{margin:8px 0 0;padding-left:20px}
+
+/* projects */
+.projects{background:var(--b);border-top:4px solid var(--ink);border-bottom:4px solid var(--ink)}
+.proj-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:36px}
+.proj{padding:26px;transition:transform .15s,box-shadow .15s}
+.proj:hover{transform:translate(-4px,-4px) rotate(-.6deg);box-shadow:14px 14px 0 var(--ink)}
+.proj h3{font-size:clamp(26px,3.2vw,38px);margin:10px 0 12px;letter-spacing:-.02em}
+.proj p{margin:0 0 14px}
+.proj:nth-child(1){grid-column:1/-1;background:var(--y)}
+.proj:nth-child(2){grid-column:1/4;transform:rotate(-1deg)}
+.proj:nth-child(3){grid-column:4/7;transform:rotate(1deg);margin-top:28px}
+.proj:nth-child(2):hover,.proj:nth-child(3):hover{transform:translate(-4px,-4px) rotate(0)}
+.when{font-family:'Caveat',cursive;font-size:24px;color:var(--r)}
+.proj:nth-child(1) .when{color:var(--ink)}
+.stack{display:flex;flex-wrap:wrap;gap:8px}
+.stack span{border:3px solid var(--ink);padding:0 10px;font-weight:700;font-size:15px;background:var(--paper)}
+.proj:nth-child(1) .stack span{background:var(--bg)}
+.proj .flag{float:right;background:var(--ink);color:var(--bg);padding:2px 10px;font-weight:700;font-size:14px;transform:rotate(3deg)}
+.projects h2{background:var(--paper);color:var(--ink);border:4px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
+.note{color:#fff;margin-top:34px}
+
+/* skills */
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
+.skill{padding:20px}
+.skill h3{font-size:24px;margin-bottom:14px;border-bottom:4px solid var(--ink);padding-bottom:8px}
+.skill:nth-child(odd){transform:rotate(-.8deg)}.skill:nth-child(even){transform:rotate(.8deg)}
+.skill .tag{margin:0 8px 10px 0}
+.skill:nth-child(2) .tag{background:var(--g)}.skill:nth-child(3) .tag{background:#fff}
+.skill:nth-child(4) .tag{background:var(--b);color:#fff}.skill:nth-child(5) .tag{background:var(--r);color:#fff}
+
+/* timeline */
+.tl{border-left:8px solid var(--ink);margin-left:12px;padding-left:34px;display:grid;gap:30px}
+.ev{padding:20px;position:relative}
+.ev::before{content:"";position:absolute;left:-52px;top:26px;width:24px;height:24px;background:var(--r);border:4px solid var(--ink)}
+.ev:nth-child(2)::before{background:var(--y)}.ev:nth-child(3)::before{background:var(--g)}.ev:nth-child(4)::before{background:var(--b)}
+.ev h3{font-size:24px;margin:4px 0 8px}
+.ev p{margin:0 0 6px}
+.ev ul{margin:8px 0 0;padding-left:20px}
+.lang{margin-top:34px;padding:16px 20px;display:inline-block;background:var(--y);transform:rotate(-1deg)}
+
+/* learning */
+.learn{background:var(--ink);color:var(--bg)}
+.learn h2{background:var(--y);color:var(--ink)}
+.learn .row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.learn .hand{font-size:42px;color:var(--y)}
+.learn .tag{background:transparent;color:var(--bg);border-color:var(--bg);box-shadow:4px 4px 0 var(--y);font-size:19px;padding:6px 16px}
+.learn .tag:hover{background:var(--y);color:var(--ink)}
+
+/* contact */
+.contact{text-align:center}
+.contact h2{font-size:clamp(44px,9vw,104px);background:var(--r);color:#fff;transform:rotate(1deg);border:4px solid var(--ink);box-shadow:8px 8px 0 var(--ink)}
+.contact .btns{justify-content:center;margin-top:20px}
+.contact .mail{display:block;margin-top:32px;font-weight:700;font-size:clamp(20px,3vw,30px);word-break:break-all}
+footer{border-top:4px solid var(--ink);background:var(--paper);padding:22px 0;font-weight:700}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media(max-width:860px){
+ body{font-size:17px;background-size:40px 100%}
+ .hero-grid,.about-grid{grid-template-columns:1fr}
+ .card-id{transform:rotate(1deg);margin-top:20px}
+ .proj-grid{grid-template-columns:1fr;gap:28px}
+ .proj:nth-child(n){grid-column:1/-1;margin-top:0}
+ section{padding:52px 0}
+ .box{box-shadow:6px 6px 0 var(--ink)}
+ .tl{padding-left:26px}.ev::before{left:-44px}
+ nav div a{margin-left:6px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap"><b>nived.</b><div><a href="#projects">projects</a><a href="#skills">skills</a><a href="#path">path</a><a href="#contact">contact</a></div></div></nav>
+
+<header class="hero"><div class="wrap hero-grid">
+ <div>
+  <div class="badges"><span class="tag">CS STUDENT</span><span class="tag">BUILD → BREAK → FIX</span><span class="tag">CURRENTLY LEARNING</span></div>
+  <h1>Hi, I'm <span>Nived.</span></h1>
+  <p class="intro">A person trying to learn programming by building things, breaking things, and figuring out how to fix them.</p>
+  <div class="btns">
+   <a class="btn main" href="#projects">View Projects</a>
+   <a class="btn" href="https://github.com/gnived07" target="_blank" rel="noopener">GitHub</a>
+   <a class="btn blue" href="https://linkedin.com/in/nived-g-nair-0b3331287" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+ </div>
+ <aside class="box card-id">
+  <span class="stk">final year!</span>
+  <span class="hand">currently…</span>
+  <p><b>B.Tech, Computer Science</b><br>Amrita School of Engineering, Amritapuri</p>
+  <p>Working on a glioma segmentation model for my final year project.</p>
+  <span class="hand">…and a shopping site I just shipped</span>
+ </aside>
+</div></header>
+
+<section class="about" id="about"><div class="wrap">
+ <h2>About me</h2>
+ <div class="about-grid">
+  <div class="box">
+   <p>I'm a Computer Science undergraduate at Amrita School of Engineering in Amritapuri, studying since 2023. I learn best by picking a project and working through whatever goes wrong.</p>
+   <p>So far that has meant a Flutter app for campus life, a full-stack online store, and a research project on spotting brain tumours in MRI scans. I mostly work in Python, Java, JavaScript and Dart.</p>
+   <p>I like working with a team, and I'm happiest when the problem is something real.</p>
+  </div>
+  <div class="box side">
+   <span class="hand">things I like building</span>
+   <ul><li>Mobile apps</li><li>Full-stack web apps</li><li>Things that sit on top of a good database</li></ul>
+  </div>
+ </div>
+</div></section>
+
+<section class="projects" id="projects"><div class="wrap">
+ <h2>Projects</h2>
+ <div class="proj-grid">
+  <article class="box proj">
+   <span class="flag">FINAL YEAR PROJECT</span>
+   <span class="when">Jan 2026 – now</span>
+   <h3>Cross-Slice Transformer for Glioma Segmentation</h3>
+   <p>Finding tumours in multi-modal MRI scans. I'm adapting a cross-slice attention idea that worked for lymph node detection on CT and trying it on the BraTS 2020 dataset. I'm also designing an uncertainty-aware module to sharpen the tumour boundaries. Before building, I read through the existing work, including GSG-UNet and MM-MSCA-AF, to see what was still missing.</p>
+   <div class="stack"><span>Python</span><span>PyTorch</span><span>Deep Learning</span><span>Medical Imaging</span></div>
+  </article>
+  <article class="box proj">
+   <span class="when">Sept – Nov 2025</span>
+   <h3>Campus361</h3>
+   <p>A campus app that puts timetables, faculty schedules and batch-wise info in one place, built for 500+ students. I put most of my effort into reusable UI pieces and a navigation flow that stays consistent across screens.</p>
+   <div class="stack"><span>Flutter</span><span>Dart</span></div>
+  </article>
+  <article class="box proj">
+   <span class="when">Sept – Oct 2026</span>
+   <h3>FitCheck</h3>
+   <p>A full-stack e-commerce site with product variants, a cart, checkout and order management. It has customer and admin logins with role-based access, and the cart and inventory logic is validated on the server. It's deployed on Vercel, Render and Supabase.</p>
+   <div class="stack"><span>React</span><span>Vite</span><span>Node.js</span><span>Express</span><span>PostgreSQL</span><span>Prisma</span></div>
+  </article>
+ </div>
+ <p class="hand note">more code lives on my GitHub ↓ <a href="https://github.com/gnived07" target="_blank" rel="noopener" style="color:#fff">github.com/gnived07</a></p>
+</div></section>
+
+<section id="skills"><div class="wrap">
+ <h2>Skills</h2>
+ <div class="skill-grid">
+  <div class="box skill"><h3>Languages</h3><span class="tag">Python</span><span class="tag">Java</span><span class="tag">JavaScript</span><span class="tag">Dart</span></div>
+  <div class="box skill"><h3>Frameworks</h3><span class="tag">Flutter</span><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">Vite</span></div>
+  <div class="box skill"><h3>Databases</h3><span class="tag">PostgreSQL</span><span class="tag">Prisma</span><span class="tag">Supabase</span></div>
+  <div class="box skill"><h3>AI / ML</h3><span class="tag">PyTorch</span><span class="tag">Deep Learning</span><span class="tag">Medical Imaging</span></div>
+  <div class="box skill"><h3>Tools</h3><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Vercel</span><span class="tag">Render</span></div>
+  <div class="box skill"><h3>Other</h3><span class="tag">Data Structures &amp; Algorithms</span><span class="tag">SDLC</span></div>
+ </div>
+</div></section>
+
+<section id="path" style="padding-top:20px"><div class="wrap">
+ <h2>Path so far</h2>
+ <div class="tl">
+  <div class="box ev"><span class="when">Aug 2023 – now</span><h3>B.Tech, Computer Science &amp; Engineering</h3><p>Amrita School of Engineering, Amritapuri. CGPA 7.36 / 10.</p></div>
+  <div class="box ev"><span class="when">Sept 2025</span><h3>Student volunteer, Student Social Responsibility</h3><p>Amrita Vishwa Vidyapeetham</p><ul><li>Helped with community safety and outreach, including traffic awareness and palliative care support.</li><li>Helped plan awareness activities for 100+ participants.</li></ul></div>
+  <div class="box ev"><span class="when">May 2025</span><h3>Security volunteer, Vidyut 2025</h3><p>National-level technical fest at Amrita Vishwa Vidyapeetham</p><ul><li>Worked with the organising teams on crowd flow and venue access for 500+ attendees.</li></ul></div>
+  <div class="box ev"><span class="when">2020 – 2022</span><h3>Veda Vyasa Vidyalayam, Kozhikode</h3><p>Class XII (CBSE, MPC): 81%. Class X (CBSE, MPC): 94%.</p></div>
+ </div>
+ <div class="box lang"><span class="hand">languages:</span> English, Malayalam, Hindi (read, write, speak, understand)</div>
+</div></section>
+
+<section class="learn"><div class="wrap">
+ <h2>Learning</h2>
+ <div class="row"><span class="hand">LEARNING →</span>
+  <span class="tag">[ DEEP LEARNING ]</span><span class="tag">[ PYTORCH ]</span><span class="tag">[ MEDICAL IMAGING ]</span><span class="tag">[ FULL-STACK DEPLOYMENT ]</span>
+ </div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+ <h2>Want to build something?</h2>
+ <div class="btns">
+  <a class="btn" href="mailto:gnived70@gmail.com">Email</a>
+  <a class="btn" href="https://github.com/gnived07" target="_blank" rel="noopener">GitHub</a>
+  <a class="btn blue" href="https://linkedin.com/in/nived-g-nair-0b3331287" target="_blank" rel="noopener">LinkedIn</a>
+ </div>
+ <a class="mail" href="mailto:gnived70@gmail.com">gnived70@gmail.com</a>
+</div></section>
+
+<footer><div class="wrap"><span>Built while figuring things out.</span><span>© 2026 — still learning.</span></div></footer>
+
+</body>
+</html>
